@@ -17,28 +17,29 @@ This project is a TypeScript-based library for modeling retirement savings, cont
 3. Calculate annual contributions:
 
    - Use ContributionCalculator to compute:
-     a. Employee contribution (percent or dollar)
-     b. Additional contribution
-     c. Employer match (subject to employer max)
+     - Employee contribution (percent or dollar)
+     - Additional contribution
+     - Employer match (subject to employer max)
 
 4. Validate input:
 
    - Use InputValidator to check:
-     a. Contributions do not exceed IRS or income limits
-     b. Age and other values are within valid ranges
-     c. If invalid, return errors
+     - Contributions do not exceed IRS or income limits
+     - Age and other values are within valid ranges
+     - If invalid, return errors
 
 5. If input is valid:
-   a. Use SavingsCalculator to:
-   i. Project total savings at retirement (compound growth, salary increases)
-   ii. Optionally, project with and without additional contributions
-   b. Calculate difference and percent difference
+
+   - Use SavingsCalculator to:
+     - Project total savings at retirement (compound growth, salary increases)
+     - Optionally, project with and without additional contributions
+   - Calculate difference and percent difference
 
 6. Calculate retirement income and duration:
 
    - Use SavingsCalculator to estimate:
-     a. How long savings will last (years, months)
-     b. Projected annual/monthly income (target: 80% of final salary)
+     - How long savings will last (years, months)
+     - Projected annual/monthly income (target: 80% of final salary)
 
 7. Return results or errors.
 
