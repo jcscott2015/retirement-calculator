@@ -206,3 +206,15 @@ const duration = calculator.calculateSavingsDuration(input, projectedSavings);
 console.log("Projected Savings at Retirement:", projectedSavings);
 console.log("Retirement Duration and Income:", duration);
 ```
+
+## Links
+
+[Future Value](https://en.wikipedia.org/wiki/Future_value)
+
+[Geometric Series](https://en.wikipedia.org/wiki/Geometric_series)
+
+[Khan Academy Geometric Series Introduction](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:poly-factor/x2ec2f6f830c9fb89:geo-series/v/geo-series-intro)
+
+[When Will Your Money Run Out?](https://home.ubalt.edu/ntsbarsh/business-stat/otherapplets/CompoundCal.htm#rjava12)
+
+[Retirement Planner's Calculator](https://home.ubalt.edu/ntsbarsh/business-stat/otherapplets/CompoundCal.htm#rjava17)
