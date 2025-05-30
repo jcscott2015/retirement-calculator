@@ -2,6 +2,12 @@ import { RetirementCalculatorInput } from "./retirementCalculatorTypes";
 
 export class ContributionCalculator {
   private readonly PAY_PERIODS: Record<string, number>;
+  private readonly calculateEmployerMatch: (
+    annualIncome: number,
+    contribution: number,
+    employerMatchPercent: number,
+    employerMaxMatchPercent: number
+  ) => number;
   private readonly calculateAnnualContribution: (
     contributionDollar: number,
     contributionPercent: number,
@@ -17,6 +23,31 @@ export class ContributionCalculator {
       twiceMonthly: 24,
       weekly: 52,
     };
+
+    /**
+     * Calculates the employer's matching contribution based on the employee's annual income,
+     * their contribution, the employer's match percentage, and the employer's maximum match percentage.
+     *
+     * The employer match is the lesser of:
+     * - The annual income multiplied by the employer's match percentage, and
+     * - The employee's contribution multiplied by the employer's maximum match percentage.
+     *
+     * @param annualIncome - The employee's annual income.
+     * @param contribution - The amount contributed by the employee.
+     * @param employerMatchPercent - The percentage of annual income the employer will match.
+     * @param employerMaxMatchPercent - The maximum percentage of the employee's contribution that the employer will match.
+     * @returns The calculated employer match amount.
+     */
+    this.calculateEmployerMatch = (
+      annualIncome,
+      contribution,
+      employerMatchPercent,
+      employerMaxMatchPercent
+    ) =>
+      Math.min(
+        annualIncome * employerMatchPercent,
+        contribution * employerMaxMatchPercent
+      );
 
     /**
      * Calculates the annual contribution based on either a percentage of annual income
@@ -102,14 +133,18 @@ export class ContributionCalculator {
       contributionFrequency
     );
 
-    const annualEmployerMatch = Math.min(
-      annualIncome * employerMatchPercent,
-      annualContribution * employerMaxMatchPercent
+    const annualEmployerMatch = this.calculateEmployerMatch(
+      annualIncome,
+      annualContribution,
+      employerMatchPercent,
+      employerMaxMatchPercent
     );
 
-    const annualAdditionalEmployerMatch = Math.min(
-      annualIncome * employerMatchPercent,
-      annualAdditionalContribution * employerMaxMatchPercent
+    const annualAdditionalEmployerMatch = this.calculateEmployerMatch(
+      annualIncome,
+      annualAdditionalContribution,
+      employerMatchPercent,
+      employerMaxMatchPercent
     );
 
     return {
