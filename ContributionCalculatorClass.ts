@@ -63,7 +63,7 @@ export class ContributionCalculator {
    *   - `contributionFrequency` (optional): The frequency of contributions (e.g., "biweekly"). Defaults to "biweekly".
    *   - `annualIncome`: The annual income of the employee.
    *   - `employerMatchPercent` (optional): The percentage of contributions matched by the employer.
-   *   - `employerMaxMatchPercent` (optional): The maximum percentage of contributions matched by the employer.
+   *   - `employerMaxMatchPercent` (optional): The maximum percentage of salary matched by the employer.
    *
    * @returns An object containing:
    *   - `annualContribution`: The annual contribution from the employee.

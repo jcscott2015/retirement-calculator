@@ -52,18 +52,34 @@ This project is a TypeScript-based library for modeling retirement savings, cont
 This class provides reusable mathematical methods for financial calculations:
 
 - **futureValue(p, r, y):**  
-  Calculates the future value of a principal amount `p` after `y` years at an annual interest rate `r`.
+   Calculates the future value of a principal amount `p` after `y` years at an annual interest rate `r`.
 
-- **geometricSeries(a, r, n):**  
+  ```math
+  FV = P(1 + r)^y
+  ```
+
+- **geometricSeries(a, r, n):**
   Computes the sum of a geometric series from index `a` to `n` with common ratio `r`. Used for summing compounded contributions or withdrawals.
 
-- **savingsPayout(p, r, y):**  
+  ```math
+  S = a + ar + ar^2 + ... + ar^{(n-1)} = \sum_{k=0}^n ar^k
+  ```
+
+- **savingsPayout(p, r, y):**
   Determines the maximum sustainable annual withdrawal from a lump sum `p` over `y` years, given a real return rate `r`.
 
-- **savingsPayoutDuration(savings, withdrawal, interestRate, inflationRate):**  
+  ```math
+  Payout = \frac{P(1 + r)^y}{\sum_{k=0}^n ar^k}
+  ```
+
+- **savingsPayoutDuration(savings, withdrawal, interestRate, inflationRate):**
   Calculates how many years and months a given savings balance will last if a fixed withdrawal is made each year, accounting for interest and inflation.
 
-- **safeDivide, precisionNumber:**  
+  ```math
+  Years = \frac{-\log(1 - \frac{P (\frac{1 + r}{1 + i} - 1)}A)}{\log(\frac{1 + r}{1 + i})}
+  ```
+
+- **safeDivide, precisionNumber:**
   Helper methods for safe division and rounding numbers to a specified precision.
 
 ---
@@ -72,10 +88,10 @@ This class provides reusable mathematical methods for financial calculations:
 
 This class provides the main contribution calculations:
 
-- **calculateAnnualContribution(contributionDollar, contributionPercent, annualIncome, contributionFrequency):**  
+- **calculateAnnualContribution(contributionDollar, contributionPercent, annualIncome, contributionFrequency):**
   Calculates the annual contribution based on either a percentage of annual income or a fixed dollar amount, distributed across a specified number of pay periods.
 
-- **calculateTotalAnnualContribution(input):**  
+- **calculateTotalAnnualContribution(input):**
   Calculates the total annual contributions for a retirement plan, including the employee's contribution, and additional contributions.
 
 ---
@@ -84,16 +100,16 @@ This class provides the main contribution calculations:
 
 This class orchestrates the main retirement calculations:
 
-- **calculateTotalSavings(currentSavings, totalContributions, years):**  
+- **calculateTotalSavings(currentSavings, totalContributions, years):**
   Estimates the total savings at retirement by compounding current savings and adding the future value of annual contributions, adjusted for salary increases and investment returns.
 
-- **getMaximumRetirementAge(retirementAge):**  
+- **getMaximumRetirementAge(retirementAge):**
   Ensures the retirement age used in calculations is within allowed bounds (e.g., not before "normal" retirement age or after a maximum withdrawal age).
 
-- **calculateProjectedRetirementSavings(input, totalContributions):**  
+- **calculateProjectedRetirementSavings(input, totalContributions):**
   Calculates the projected savings at retirement, considering both working years (with contributions) and any additional years before withdrawals begin.
 
-- **calculateSavingsDuration(input, totalSavingsAtRetirement):**  
+- **calculateSavingsDuration(input, totalSavingsAtRetirement):**
   Determines how long the retirement savings will last, what the projected annual and monthly income will be, and whether the savings can support the target income (typically 80% of final salary) for the desired retirement duration.
 
 ---
@@ -102,38 +118,38 @@ This class orchestrates the main retirement calculations:
 
 This class provides the error messages, custom error messages, and validation of initial and input values:
 
-- **convertToNumberFriendlyFormat(num, toUpperCase, threshold):**  
+- **convertToNumberFriendlyFormat(num, toUpperCase, threshold):**
   Converts a number into a more human-readable format using SI symbols (e.g., "k" for thousand, "M" for million).
 
-- **replaceAllInString(str, replacements, input):**  
+- **replaceAllInString(str, replacements, input):**
   Replaces all placeholders in a given string with corresponding values from the provided inputs.
 
-- **replaceAllInErrorMessages(errorMsgs):**  
+- **replaceAllInErrorMessages(errorMsgs):**
   Replaces all placeholders in the error messages with corresponding values from the input object.
 
-- **getAnnualContributionLimit(age):**  
+- **getAnnualContributionLimit(age):**
   Gets the annual contribution limit for a retirement account based on IRS limits and the individual's age.
 
-- **createErrorMessages(input):**  
+- **createErrorMessages(input):**
   Generates error messages for the provided retirement calculator input.
 
-- **validateInput(input, currentYearsAdditionalContribution, currentYearsContribution, currentYearsEmployerMatch, errors, errorMessages):**  
+- **validateInput(input, currentYearsAdditionalContribution, currentYearsContribution, currentYearsEmployerMatch, errors, errorMessages):**
   Validates the input data for a retirement calculator and populates the errors object with appropriate error messages if any validation rules are violated.
 
 ---
 
 ## How the Calculator Works
 
-1. **User Input:**  
+1. **User Input:**
    The user provides their age, income, current savings, contribution details, and employer match information.
 
-2. **Projection:**  
+2. **Projection:**
    The calculator estimates how much will be saved by retirement, factoring in annual contributions, salary increases, and investment growth.
 
-3. **Withdrawal Simulation:**  
+3. **Withdrawal Simulation:**
    After retirement, the calculator models annual withdrawals (usually 80% of final salary), adjusting for inflation and investment returns, to see how long the savings will last.
 
-4. **Results:**  
+4. **Results:**
    The user sees:
    - Projected savings at retirement
    - How many years their savings will last at the target income
@@ -218,3 +234,7 @@ console.log("Retirement Duration and Income:", duration);
 [When Will Your Money Run Out?](https://home.ubalt.edu/ntsbarsh/business-stat/otherapplets/CompoundCal.htm#rjava12)
 
 [Retirement Planner's Calculator](https://home.ubalt.edu/ntsbarsh/business-stat/otherapplets/CompoundCal.htm#rjava17)
+
+```
+
+```

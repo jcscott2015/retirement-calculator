@@ -43,7 +43,7 @@ export class CalcUtilities {
    * - The function uses logarithmic calculations to determine the duration.
    * - Essentially, a geometric series solved for n.
    * - The formula used is:
-   * - n = ln[1 - (S * (1 - r)) / a] / ln(r)
+   * - n = ln[1 - (S * ((1 + r/1 + i) - 1) / a(1 + r/1 + i)) / ln(1 + r/1 + i)
    * @description
    * This function calculates the duration (in years) that a given savings will last
    * based on the withdrawal amount, interest rate, and inflation rate.
@@ -52,7 +52,7 @@ export class CalcUtilities {
    * due to interest and the eroding effect of inflation.
    * The formula used is:
    * \[
-   *   \text{Duration} = \frac{-\log(1 - \frac{\text{Savings} \cdot \text{Adjusted Growth}}{\text{Withdrawal} \cdot (1 + \text{Interest Rate})})}{\log(\frac{1 + \text{Interest Rate}}{1 + \text{Inflation Rate}})}
+   *   Years = \frac{-\log(1 - \frac{P (\frac{1 + r}{1 + i} - 1)}A)}{\log(\frac{1 + r}{1 + i})}
    * \]
    * where:
    * - \(\text{Adjusted Growth} = \frac{(1 + \text{Interest Rate})}{(1 + \text{Inflation Rate})} - 1\)
@@ -86,8 +86,10 @@ export class CalcUtilities {
     const adjustedGrowth = base - 1;
 
     // Calculate the numerator and denominator for the formula
+    // S * ((1 + r/1 + i) - 1)
     const numerator = savings * adjustedGrowth;
-    const denominator = withdrawal * base;
+    // a
+    const denominator = withdrawal;
 
     // Validate inputs to ensure the calculation is feasible
     if (
@@ -126,7 +128,7 @@ export class CalcUtilities {
    * @description
    * This function calculates the savings payout using the formula:
    * \[
-   *   \text{Savings Payout} = \frac{\text{Future Value}(P, r, y - 1)}{\text{Geometric Series}(0, 1 + r, y - 1)}
+   *   Payout = \frac{P(1 + r)^y}{\sum_{k=0}^n ar^k}
    * \]
    * where:
    * - \(P\) is the principal amount (initial investment or loan amount).
@@ -152,7 +154,7 @@ export class CalcUtilities {
    * @description
    * This function computes the future value of an investment using the formula:
    * \[
-   *   \text{Future Value} = P \times (1 + r)^y
+   *   FV = P(1 + r)^y
    * \]
    * where:
    * - \(P\) is the principal amount (initial investment).
@@ -179,7 +181,7 @@ export class CalcUtilities {
    * @description
    * This function computes the sum or difference of a finite geometric series.
    * The series is defined as:
-   * S = a + ar + ar^2 + ... + ar^(n-1)
+   * S = a + ar + ar^2 + ... + ar^{(n-1)} = \sum_{k=0}^n ar^k
    * where:
    * - a is the first term of the series.
    * - r is the common ratio.

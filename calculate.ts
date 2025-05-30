@@ -22,9 +22,9 @@ const result = calculator.calculate({
   contributionPercent: 0.02,
   currentAge: 30,
   // currentSavings: 20000,
-  employerMatchPercent: 1,
-  employerMaxMatchPercent: 0.03,
-  retirementAge: 50,
+  // employerMatchPercent: 1,
+  // employerMaxMatchPercent: 0.03,
+  retirementAge: 65,
 });
 
 if (result.errors) {
