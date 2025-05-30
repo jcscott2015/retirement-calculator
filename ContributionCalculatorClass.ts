@@ -69,11 +69,13 @@ export class ContributionCalculator {
    *   - `annualContribution`: The annual contribution from the employee.
    *   - `annualAdditionalContribution`: The annual additional contribution from the employee.
    *   - `annualEmployerMatch`: The annual employer match contribution.
+   *   - `annualAdditionalEmployerMatch`: The annual employer match for additional contribution.
    */
   public calculateTotalAnnualContribution(input: RetirementCalculatorInput): {
     annualContribution: number;
     annualAdditionalContribution: number;
     annualEmployerMatch: number;
+    annualAdditionalEmployerMatch: number;
   } {
     const {
       additionalContributionDollar = 0,
@@ -102,13 +104,18 @@ export class ContributionCalculator {
 
     const annualEmployerMatch = Math.min(
       annualIncome * employerMatchPercent,
-      (annualContribution + annualAdditionalContribution) *
-        employerMaxMatchPercent
+      annualContribution * employerMaxMatchPercent
+    );
+
+    const annualAdditionalEmployerMatch = Math.min(
+      annualIncome * employerMatchPercent,
+      annualAdditionalContribution * employerMaxMatchPercent
     );
 
     return {
-      annualContribution,
       annualAdditionalContribution,
+      annualAdditionalEmployerMatch,
+      annualContribution,
       annualEmployerMatch,
     };
   }

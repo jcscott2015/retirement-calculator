@@ -217,9 +217,10 @@ export class InputValidator {
    *
    * @param input - The input data for the retirement calculator, containing various financial
    * and demographic details such as contributions, income, age, and savings.
-   * @param currentYearsAdditionalContribution - The additional contribution made in the current year.
    * @param currentYearsContribution - The total contribution made in the current year.
+   * @param currentYearsAdditionalContribution - The additional contribution made in the current year.
    * @param currentYearsEmployerMatch - The employer's matching contribution for the current year.
+   * @param currentYearsAdditionalEmployerMatch - The employer's additional matching contribution for the current year.
    * @param errors - An object to store validation errors. Defaults to an empty object.
    * @param errorMessages - An object containing error messages corresponding to validation rules.
    * Defaults to an empty object.
@@ -239,9 +240,10 @@ export class InputValidator {
    */
   public validateInput(
     input: RetirementCalculatorInput,
-    currentYearsAdditionalContribution: number,
     currentYearsContribution: number,
+    currentYearsAdditionalContribution: number,
     currentYearsEmployerMatch: number,
+    currentYearsAdditionalEmployerMatch: number,
     errors: RetirementCalculatorOutput["errors"] = {},
     errorMessages: RetirementCalculatorInitialValues["errorMsgs"] = {}
   ) {
@@ -266,9 +268,10 @@ export class InputValidator {
 
     // Validate if the annual contribution limit exceeds this year's IRS limits
     if (
-      currentYearsAdditionalContribution +
-        currentYearsContribution +
-        currentYearsEmployerMatch >
+      currentYearsContribution +
+        currentYearsAdditionalContribution +
+        currentYearsEmployerMatch +
+        currentYearsAdditionalEmployerMatch >
       this.getAnnualContributionLimit(currentAge)
     ) {
       errors.annualContributionLimit = errorMessages.annualContributionLimit;

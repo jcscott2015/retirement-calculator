@@ -57,6 +57,7 @@ export class RetirementCalculator {
     // Calculate contributions
     const {
       annualAdditionalContribution,
+      annualAdditionalEmployerMatch,
       annualContribution,
       annualEmployerMatch,
     } = this.contributionCalculator.calculateTotalAnnualContribution(input);
@@ -67,9 +68,10 @@ export class RetirementCalculator {
     // Validate input
     this.inputValidator.validateInput(
       input,
-      this.calcUtilities.precisionNumber(annualAdditionalContribution),
       this.calcUtilities.precisionNumber(annualContribution),
+      this.calcUtilities.precisionNumber(annualAdditionalContribution),
       this.calcUtilities.precisionNumber(annualEmployerMatch),
+      this.calcUtilities.precisionNumber(annualAdditionalEmployerMatch),
       errors,
       errorMessages
     );
@@ -93,7 +95,8 @@ export class RetirementCalculator {
             input,
             annualContribution +
               annualAdditionalContribution +
-              annualEmployerMatch
+              annualEmployerMatch +
+              annualAdditionalEmployerMatch
           )
         );
 
