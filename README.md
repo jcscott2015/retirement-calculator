@@ -1,4 +1,4 @@
-# Capital Group Retirement Calculator
+# Retirement Calculator
 
 ## Overview
 
@@ -234,7 +234,3 @@ console.log("Retirement Duration and Income:", duration);
 [When Will Your Money Run Out?](https://home.ubalt.edu/ntsbarsh/business-stat/otherapplets/CompoundCal.htm#rjava12)
 
 [Retirement Planner's Calculator](https://home.ubalt.edu/ntsbarsh/business-stat/otherapplets/CompoundCal.htm#rjava17)
-
-```
-
-```
