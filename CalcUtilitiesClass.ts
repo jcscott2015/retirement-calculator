@@ -43,7 +43,7 @@ export class CalcUtilities {
    * - The function uses logarithmic calculations to determine the duration.
    * - Essentially, a geometric series solved for n.
    * - The formula used is:
-   * - n = ln[1 - (S * ((1 + r/1 + i) - 1) / a(1 + r/1 + i)) / ln(1 + r/1 + i)
+   * - n = ln[1 - ((S * ((1 + r/1 + i) - 1) / a)] / ln(1 + r/1 + i)
    * @description
    * This function calculates the duration (in years) that a given savings will last
    * based on the withdrawal amount, interest rate, and inflation rate.
