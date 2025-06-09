@@ -105,7 +105,7 @@ export class CalcUtilities {
     // Calculate and...
     const durationYrs =
       (-1 * Math.log(1 - numerator / denominator)) / Math.log(base);
-    const totalMonths = Math.round(durationYrs * monthsInYear);
+    const totalMonths = Math.floor(durationYrs * monthsInYear);
     const years = Math.floor(durationYrs);
     const months = totalMonths % monthsInYear;
 

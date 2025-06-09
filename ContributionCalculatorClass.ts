@@ -71,11 +71,9 @@ export class ContributionCalculator {
     ) => {
       const payPeriods = this.PAY_PERIODS[contributionFrequency];
       const contributionFromPercent =
-        contributionPercent > 0
-          ? (annualIncome * contributionPercent) / payPeriods
-          : 0;
+        contributionPercent > 0 ? annualIncome * contributionPercent : 0;
       const contributionFromDollar =
-        contributionDollar > 0 ? contributionDollar / payPeriods : 0;
+        contributionDollar > 0 ? contributionDollar : 0;
       return (
         Math.max(contributionFromPercent, contributionFromDollar) * payPeriods
       );
