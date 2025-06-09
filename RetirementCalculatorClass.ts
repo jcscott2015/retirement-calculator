@@ -115,7 +115,7 @@ export class RetirementCalculator {
           this.calcUtilities.safeDivide(
             results.totalSavingsAtRetirement,
             results.totalAdditionalSavingsAtRetirement
-          )
+          ) / 100
         );
     }
 
