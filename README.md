@@ -223,6 +223,30 @@ console.log("Projected Savings at Retirement:", projectedSavings);
 console.log("Retirement Duration and Income:", duration);
 ```
 
+## Running in node
+
+From Terminal, install dependencies:
+
+```
+pnpm i
+```
+
+Then, use [tsx](https://gihub.com/privatenumber/tsx) to run `calculate.ts`:
+
+```
+pnpm start
+```
+
+## Testing
+
+Project uses the latest version of [Jest](https://jestjs.io) and [ts-jest](https://kulshekhar.github.io/ts-jest).
+
+Simply run tests with:
+
+```
+pnpm test
+```
+
 ## Links
 
 [Future Value](https://en.wikipedia.org/wiki/Future_value)

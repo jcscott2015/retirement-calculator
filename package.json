@@ -1,0 +1,22 @@
+{
+  "name": "retirement-calculator",
+  "version": "1.0.0",
+  "description": "Calculates the amount of money needed to retire based on various inputs.",
+  "main": "calculate.js",
+  "scripts": {
+    "start": "tsx calculate.js",
+    "test": "jest --config jest.config.js"
+  },
+  "keywords": [],
+  "author": "John C. Scott",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.0",
+    "ts-jest": "^29.4.0"
+  },
+  "dependencies": {
+    "tsx": "^4.20.3"
+  }
+}

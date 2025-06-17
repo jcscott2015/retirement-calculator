@@ -90,8 +90,8 @@ export class InputValidator {
      * @returns The input string with placeholders replaced by corresponding values.
      */
     this.replaceAllInString = (str, replacements, input) => {
-      const placeholders = str.match(/\[\w+\]/g) || [];
-      return placeholders.reduce((result, placeholder) => {
+      const placeholders: string[] = str.match(/\[\w+\]/g) || [];
+      return placeholders.reduce((result: string, placeholder) => {
         const placeholderKey = placeholder.replace(/[[\]]/g, "");
         let replacement =
           input?.[placeholderKey as keyof RetirementCalculatorInput] ??
